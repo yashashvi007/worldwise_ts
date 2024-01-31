@@ -52,3 +52,46 @@ export interface ICityPost {
     position: IPosition;
   }
   
+
+
+export type CitiesReducerType = {
+    cities: ICity[];
+    isLoading: boolean;
+    currentCity: ICity | null;
+    error: string;
+};
+  
+export type CitiesAction =
+    | {
+        type: CitiesActionType.Loading;
+      }
+    | {
+        type: CitiesActionType.CitiesLoaded;
+        payload: ICity[];
+      }
+    | {
+        type: CitiesActionType.CityCreated;
+        payload: ICity;
+      }
+    | {
+        type: CitiesActionType.CityDeleted;
+        payload: number;
+      }
+    | {
+        type: CitiesActionType.Rejected;
+        payload: string;
+      }
+    | {
+        type: CitiesActionType.CityLoaded;
+        payload: ICity;
+      };
+  
+export enum CitiesActionType {
+    Loading = 'loading',
+    CitiesLoaded = 'cities/loaded',
+    CityCreated = 'cities/created',
+    CityDeleted = 'cities/deleted',
+    Rejected = 'rejected',
+    CityLoaded = 'city/loaded',
+}
+  
